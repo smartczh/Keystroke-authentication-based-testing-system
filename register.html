@@ -1,152 +1,309 @@
 ﻿<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link rel="stylesheet" href="css/bootstrap.css" />
-		<link rel="stylesheet" href="css/register.css" />
-		<link rel="stylesheet" href="css/footer&cbl.css" />
-		<link rel="stylesheet" href="css/daohang.css" />
-		<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>		
-		<script type="text/javascript" src="js/bootstrap.js" ></script>
-		<script type="text/javascript" src="js/templet.js" ></script>
-		<title></title>
-	</head>
-	<body>
-	<div id="main">
-		<nav class=" navbar-inverse" id="daohang">
-				<div class="daohang">
-					<div class="navbar-header clearfix">
-						<button type="button" class="zd" id="zd" >
-							<span class="glyphicon glyphicon-align-justify"></span>
-						</button>
-					</div>
-					<div class="collapse navbar-collapse" id="daohangtiao">
-						<span class="close"><a href="index.html"><i></i></a></span>					
-					</div>						
-				</div>
-				<div id="box">
-					<div class="box1 col-sm-2 col-xs-2">
-						<span id="X" class="glyphicon glyphicon-remove pull-right" ></span>
-					</div>
-					<div class="box2 col-sm-10 col-xs-10" >
-						<ul id="ul1"class="clearfix">
-							<li><a href="index.html">首页</a></li>
-							<li><a href="templet.html">模板</a></li>
-							<li><a href="setmeal.html">套餐</a></li>
-							<li><a href="example.html">案例</a></li>
-							<li id="wd"><a>文档<i class="glyphicon glyphicon-menu-right"></i></a></li>
-							<li id="gy"><a>关于<i class="glyphicon glyphicon-menu-right"></i></a></li>
-						</ul>
-						<div id="wd1">
-							<ul>
-								<li id="fanhui1"><a>返回上一级</a></li>
-								<li><a>教程中心</a></li>
-								<li><a>建站资讯</a></li>
-								<li><a>更新日志</a></li>
-							</ul>
-						</div>
-						<div id="gy1" >
-							<ul id="ul2">
-								<li id="fanhui2"><a>返回上一级</a></li>
-								<li id="gcxx"><a>公司信息<i class="glyphicon glyphicon-menu-right"></i></a></li>
-								<li><a>荣誉资质</a></li>
-								<li><a>联系客服</a></li>
-							</ul>
-						</div>
-						<div id="gc" >
-							<ul >
-								<li id="fanhui3"><a>返回上一级</a></li>
-								<li><a>公司介绍</a></li>
-								<li><a>服务条款</a></li>
-								<li><a>法律声明</a></li>
-								<li><a>可接受服务</a></li>
-								<li><a>免责声明</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</nav>
-		<div class="main">
-			<div class="container  ">
-				<div class="c2">
-					<a href=""></a><span>
-						<img src="img/qifeiye.png" />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/register.css"/>
+    <link rel="stylesheet" href="css/footer&cbl.css"/>
+    <link rel="stylesheet" href="css/daohang.css"/>
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/templet.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="main">
+    <nav class=" navbar-inverse" id="daohang">
+        <div class="daohang">
+            <div class="navbar-header clearfix">
+                <button type="button" class="zd" id="zd">
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="daohangtiao">
+                <span class="close"><a href="index.html"><i></i></a></span>
+            </div>
+        </div>
+        <div id="box">
+            <div class="box1 col-sm-2 col-xs-2">
+                <span id="X" class="glyphicon glyphicon-remove pull-right"></span>
+            </div>
+            <div class="box2 col-sm-10 col-xs-10">
+                <ul id="ul1" class="clearfix">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="templet.html">模板</a></li>
+                    <li><a href="setmeal.html">套餐</a></li>
+                    <li><a href="example.html">案例</a></li>
+                    <li id="wd"><a>文档<i class="glyphicon glyphicon-menu-right"></i></a></li>
+                    <li id="gy"><a>关于<i class="glyphicon glyphicon-menu-right"></i></a></li>
+                </ul>
+                <div id="wd1">
+                    <ul>
+                        <li id="fanhui1"><a>返回上一级</a></li>
+                        <li><a>教程中心</a></li>
+                        <li><a>建站资讯</a></li>
+                        <li><a>更新日志</a></li>
+                    </ul>
+                </div>
+                <div id="gy1">
+                    <ul id="ul2">
+                        <li id="fanhui2"><a>返回上一级</a></li>
+                        <li id="gcxx"><a>公司信息<i class="glyphicon glyphicon-menu-right"></i></a></li>
+                        <li><a>荣誉资质</a></li>
+                        <li><a>联系客服</a></li>
+                    </ul>
+                </div>
+                <div id="gc">
+                    <ul>
+                        <li id="fanhui3"><a>返回上一级</a></li>
+                        <li><a>公司介绍</a></li>
+                        <li><a>服务条款</a></li>
+                        <li><a>法律声明</a></li>
+                        <li><a>可接受服务</a></li>
+                        <li><a>免责声明</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="main">
+        <div class="container  ">
+            <div class="c2">
+                <a href=""></a><span>
+						<img src="img/qifeiye.png"/>
 					</span></a>
-					<p>从这里开启建站之旅</p>	
-				</div>
-				<div class="c3">
-					<form>
-						<div class="form-group">
-    						<label for="usernameoremail">电子邮箱 *</label>
-    						<input type="text" class="form-control" id="usernameoremail">
-    						<span class="pp hide">此项必须填写</span>
-  						</div>
-  						<div class="form-group">
-    						<label for="password">密码 <img class="help" src="img/help.png" title="最少8位"/>*</label>
-    						<input type="password" class="form-control" id="password">
-  							<span class="pp hide">此项必须填写</span>
-  						</div>
-  						<div class="form-group">
-    						<label for="password">再次输入密码 </label>
-    						<input type="password" class="form-control" id="password">
-  						</div>
-  						<div class="form-group">
-    						<label for="question">验证问题 *</label>
-    						<p style="color: #CCCCCC; font-size: 14px;">请回答: <label id="answer" style="color: #CCCCCC; font-size: 14px;"></label> 等于几?</p>
-    						<input type="text" class="form-control" id="password">
-  							<span class="pp hide">此项必须填写</span>
-  						</div>
-  						<div class="checkbox">
-    						<label>
-     		 					<input type="checkbox"> 我已经阅读并同意<a>服务条款</a>以及<a>法律声明</a>。我不会创建含有低俗内容及有碍社会安定内容的网站。
-    						</label>
-  						</div>
-  						<div class="c3-1">
-							<button type="submit" class="btn btn-default btn1">注册</button>  
-							<a href="login.html" type="button" class="btn btn-default btn2">已经有账号了?请登录</a>
-						</div>
-						<div class="c3-2 clearfix">
-							<span class="c3-2-2">其他账号登录：</span>
-							<div class="c3-2-1">
-								<a href="" title="使用腾讯QQ登录"><span class="s1"></span></a>
-								<a href="" title="使用微信登录"><span class="s2"></span></a>
-								<a href="" title="使用谷歌登录"><span class="s3"></span></a>
-								<a href="" title="使用脸书登录"><span class="s4"></span></a>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<ul class="cbl" >
-			<li><a href="#">
-				<div class="icon d1"><i class="i1"></i><span class="title">在线客服</span></div>
-			</a></li>
-			<i class="clearfix"></i>
-			<li><a href="#">
-				<div class="icon d2"><i class="i2"></i><span class="title">4006285729</span></div>
-			</a></li>
-			<i class="clearfix"></i>
-			<li><a  href="#">
-				<div class="icon"><i class="i3"></i><span class="title">教程中心</span></div>
-			</a></li>
-			<i class="clearfix"></i>
-			<li ><a  href="#">
-				<div class="icon d4" data-toggle="tooltip" data-placement = "left" title="<img src='img/erweima.png'><br/> 关注微信 " data-html="true"><i class="i4"></i></div>
-			</a></li>
-		</ul>
-	</div>
-	</body>
-	<script type="text/javascript" src="js/hp.js" ></script>
-	<script type="text/javascript">
-		/*$(function(){
-			$("#dhbtn1").click(function(){
-			//	console.log(1);
-				$(".dhkuang").show();
-				$(".dhneirong").animate("left","679px")
-			})
-		})*/
-	</script>
-	
+                <p>从这里开启建站之旅</p>
+            </div>
+            <div class="c3">
+                <form id="form-register">
+                    <div class="form-group">
+                        <label for="input-username">用户名</label>
+                        <input type="text" class="form-control" id="input-username">
+                        <span class="pp hide">此项必须填写</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-password">密码 <img class="help" src="img/help.png" title="最少8位"/>*</label>
+                        <input type="password" class="form-control" id="input-password">
+                        <span id="span-hint-registerTime" class="pp"></span>
+                        <span id="span-show-registerTime" class="pp">已输入0次</span>
+                        <button id="button-register-oneTime" class="btn btn-default btn1" type="button">确认</button>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> 我已经阅读并同意<a>服务条款</a>以及<a>法律声明</a>。我不会创建含有低俗内容及有碍社会安定内容的网站。
+                        </label>
+                    </div>
+                    <div class="c3-1">
+                        <button type="submit" class="btn btn-default btn1">注册</button>
+                        <a href="login.html" type="button" class="btn btn-default btn2">已经有账号了?请登录</a>
+                    </div>
+                    <div class="c3-2 clearfix">
+                        <span class="c3-2-2">其他账号登录：</span>
+                        <div class="c3-2-1">
+                            <a href="" title="使用腾讯QQ登录"><span class="s1"></span></a>
+                            <a href="" title="使用微信登录"><span class="s2"></span></a>
+                            <a href="" title="使用谷歌登录"><span class="s3"></span></a>
+                            <a href="" title="使用脸书登录"><span class="s4"></span></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <ul class="cbl">
+        <li><a href="#">
+            <div class="icon d1"><i class="i1"></i><span class="title">在线客服</span></div>
+        </a></li>
+        <i class="clearfix"></i>
+        <li><a href="#">
+            <div class="icon d2"><i class="i2"></i><span class="title">4006285729</span></div>
+        </a></li>
+        <i class="clearfix"></i>
+        <li><a href="#">
+            <div class="icon"><i class="i3"></i><span class="title">教程中心</span></div>
+        </a></li>
+        <i class="clearfix"></i>
+        <li><a href="#">
+            <div class="icon d4" data-toggle="tooltip" data-placement="left"
+                 title="<img src='img/erweima.png'><br/> 关注微信 " data-html="true"><i class="i4"></i></div>
+        </a></li>
+    </ul>
+</div>
+</body>
+<script type="text/javascript" src="js/hp.js"></script>
+<script type="text/javascript" src="js/settings.js"></script>
+<script type="text/javascript">
+    $("#span-hint-registerTime").html("您需要重复输入" + rule_registerTimes + "次密码");
+    let password = "";
+    let registerTime = 0;//记录输入密码的次数
+    let pressTimeArray = [];
+    let pressTimeObject = [];
+    let releaseTimeArray = [];
+    let releaseTimeObject = [];
+    $("#input-password").keydown(function (event) {//keypress 事件与 keydown 事件类似。当按钮被按下时发生该事件。然而，keypress 事件不会触发所有的键（比如 ALT、CTRL、SHIFT、ESC）。请使用 keydown() 方法来检查这些键。
+        let currTime = Date.now();
+        let currCharNum = event.which;
+        //todo 判断是否是特殊键，以及优化时间考虑（先获取时间再判断）
+        if (currCharNum == 13) {//回车键的处理
+            $("#button-register-oneTime").click();
+            event.preventDefault();
+            return false;
+        }
+        pressTimeObject.push(currTime);
+    });
+
+    $("#input-password").keyup(function (event) {
+        let currTime = Date.now();
+        let currCharNum = event.which;
+        //todo 判断是否是特殊键，以及优化时间考虑（先获取时间再判断）
+        if (currCharNum == 13) {//回车键的处理
+            return;
+        }
+        releaseTimeObject.push(currTime);
+    });
+
+    $("#button-register-oneTime").click(function () {
+        if (registerTime == 0) {//第一次输入，记录密码
+            password = $("#input-password").val();
+        }
+        if (registerTime == rule_registerTimes) {
+            alert("次数够了");
+            return;
+        }
+        if ($("#input-password").val() != password) {
+            alert("输入密码不一致，请重新输入");
+            flush();
+            return;
+        }
+        pressTimeArray.push(pressTimeObject);
+        releaseTimeArray.push(releaseTimeObject);
+        registerTime++;
+        flush();
+    });
+
+    function flush() {//清空输入框数据
+        pressTimeObject = [];
+        releaseTimeObject = [];
+        $("#input-password").val("");
+        $("#span-show-registerTime").html("已输入" + registerTime + "次");
+    }
+
+    $("#form-register").submit(function (event) {
+        event.preventDefault();
+        let username = $("#input-username").val();
+        if (username == "") {
+            alert("用户名为空");
+            return;
+        }
+        if(password==""){
+            alert("密码为空");
+            return;
+        }
+        if(registerTime < rule_registerTimes){
+            alert("密码输入次数不足");
+            return;
+        }
+        $.ajax({
+            url: "",
+            type: "get",
+            dataType: "json",
+            success: function(data, status){
+
+            },
+            error: function (message) {
+                alert("注册失败");
+            }
+        });
+    });
+
+    //该写法flighttime提取没问题，但是holdtime不好提取，因为还没释放第一个键第二个可能就按下去了;可以只传时间戳给后端，但是这样前端就不能直接展示提取的效果
+    // $("#span-hint-registerTime").html("您需要重复输入" + rule_registerTimes + "次密码");
+    // let password = "";
+    // let registerTime = 0;//记录输入密码的次数
+    // let prevTime = 0;//上一个press时间
+    // let prevCharNum = -1;//上一个press字符
+    // let flightTimeArray = [];
+    // let flightTimeObject = [];
+    // let holdTimeArray = [];
+    // let holdTimeObject = [];
+    // let holeTimeIndex = 0;//记录是第几次release，来找对应的press
+    // $("#password").keydown(function (event) {//keypress 事件与 keydown 事件类似。当按钮被按下时发生该事件。然而，keypress 事件不会触发所有的键（比如 ALT、CTRL、SHIFT、ESC）。请使用 keydown() 方法来检查这些键。
+    //     let currTime = Date.now();
+    //     let currCharNum = event.which;
+    //     if (currCharNum >= 96 && currCharNum <= 105) {//转化小键盘的键盘码到字符码的范围
+    //         currCharNum = currCharNum - 48;
+    //     }
+    //     //todo 判断是否是特殊键，以及优化时间考虑（先获取时间再判断）
+    //     if (currCharNum == 13) {//回车键的处理
+    //         $("#button-register-oneTime").click();
+    //         event.preventDefault();
+    //         return false;
+    //     }
+    //     //非第一次按下
+    //     if (prevTime != 0) {
+    //         let item = {};
+    //         let key = String.fromCharCode(prevCharNum) + String.fromCharCode(currCharNum);
+    //         let value = currTime - prevTime;
+    //         item[key] = value;
+    //         flightTimeObject.push(item);
+    //     }
+    //     prevTime = currTime;//Date.now()是Date.getTime()速度的两倍，功能等价
+    //     prevCharNum = currCharNum;
+    // });
+    //
+    // $("#password").keyup(function (event) {
+    //     let currTime = Date.now();
+    //     let currCharNum = event.which;
+    //     //todo 判断是否是特殊键，以及优化时间考虑（先获取时间再判断）
+    //     if (currCharNum == 13) {//回车键的处理
+    //         return;
+    //     }
+    //     let item = {};
+    //     let key;
+    //     if (holeTimeIndex < flightTimeObject.length) {
+    //         key = Object.keys(flightTimeObject[holeTimeIndex])[0].substr(0, 1);
+    //     }
+    //     else {
+    //         key = String.fromCharCode(prevCharNum);
+    //     }
+    //     let value = currTime - prevTime;//todo 这个计算方式不对，按键不对应
+    //     item[key] = value;
+    //     holdTimeObject.push(item);
+    //     holeTimeIndex++;
+    // });
+    //
+    // $("#button-register-oneTime").click(function () {
+    //     if (registerTime == 0) {//第一次输入，记录密码
+    //         password = $("#password").val();
+    //     }
+    //     if (registerTime == rule_registerTimes) {
+    //         alert("次数够了");
+    //         return;
+    //     }
+    //     if ($("#password").val() != password) {
+    //         alert("输入密码不一致，请重新输入");
+    //         flush();
+    //         return;
+    //     }
+    //     flightTimeArray.push(flightTimeObject);
+    //     holdTimeArray.push(holdTimeObject);
+    //     registerTime++;
+    //     flush();
+    // });
+    //
+    // function flush() {
+    //     flightTimeObject = [];
+    //     holdTimeObject = [];
+    //     holeTimeIndex = 0;
+    //     $("#password").val("");
+    //     prevTime = 0;//上一个press时间
+    //     prevCharNum = -1;//上一个press字符
+    //     $("#span-show-registerTime").html("已输入" + registerTime + "次");
+    // }
+
+
+</script>
+
 </html>
