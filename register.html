@@ -80,15 +80,22 @@
                 <form id="form-register">
                     <div class="form-group">
                         <label for="input-username">用户名</label>
-                        <input type="text" class="form-control" id="input-username">
+                        <input type="text" class="form-control" id="input-username" autocomplete="off">
                         <span class="pp hide">此项必须填写</span>
                     </div>
                     <div class="form-group">
                         <label for="input-password">密码 <img class="help" src="img/help.png" title="最少8位"/>*</label>
-                        <input type="password" class="form-control" id="input-password">
+                        <input type="text" class="form-control" id="input-password" autocomplete="off">
                         <span id="span-hint-registerTime" class="pp"></span>
                         <span id="span-show-registerTime" class="pp">已输入0次</span>
-                        <button id="button-register-oneTime" class="btn btn-default btn1" type="button">确认</button>
+                        <button id="button-register-oneTime" class="btn-sm btn-default btn1" type="button">确认</button>
+                        <button id="button-clear" class="btn btn-default btn1" type="button"
+                                style="width: 100%; margin-top: 10px">清空所有
+                        </button>
+                        <button id="button-show-figure" class="btn btn-default btn1" type="button"
+                                style="width: 100%; margin-top: 10px; display: none" data-toggle="modal"
+                                data-target="#myModal">显示特性
+                        </button>
                     </div>
                     <div class="checkbox">
                         <label>
@@ -131,9 +138,42 @@
         </a></li>
     </ul>
 </div>
+
+<!-- 模态框 -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">击键特性</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <div id="div-htFigure">
+
+                </div>
+                <div id="div-ftFigure">
+
+                </div>
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 </body>
 <script type="text/javascript" src="js/hp.js"></script>
-<script type="text/javascript" src="js/settings.js"></script>
+<script type="text/javascript" src="js/myJS/settings.js"></script>
+<script type="text/javascript" src="js/myJS/tools.js"></script>
+<script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
 <script type="text/javascript">
     $("#span-hint-registerTime").html("您需要重复输入" + rule_registerTimes + "次密码");
     let password = "";
@@ -151,6 +191,11 @@
             event.preventDefault();
             return false;
         }
+        if (currCharNum == 8) {//退格键的处理
+            flush();
+            alert("需要一次性输对密码");
+            return;
+        }
         pressTimeObject.push(currTime);
     });
 
@@ -161,12 +206,22 @@
         if (currCharNum == 13) {//回车键的处理
             return;
         }
+        if (currCharNum == 8) {//退格键的处理
+            return;
+        }
+        if (currCharNum == 9) {//tab键的处理
+            return;//由上一个输入框转过来的，不记录时间戳
+        }
         releaseTimeObject.push(currTime);
     });
 
     $("#button-register-oneTime").click(function () {
         if (registerTime == 0) {//第一次输入，记录密码
             password = $("#input-password").val();
+            if (password == "") {
+                alert("密码为空，请重新输入");
+                return;
+            }
         }
         if (registerTime == rule_registerTimes) {
             alert("次数够了");
@@ -180,7 +235,14 @@
         pressTimeArray.push(pressTimeObject);
         releaseTimeArray.push(releaseTimeObject);
         registerTime++;
+        if (registerTime == rule_registerTimes) {
+            $("#button-show-figure").show();
+        }
         flush();
+    });
+
+    $("#button-clear").click(function () {
+        clear();
     });
 
     function flush() {//清空输入框数据
@@ -190,6 +252,19 @@
         $("#span-show-registerTime").html("已输入" + registerTime + "次");
     }
 
+    function clear() {//清空所有数据
+        $("#input-username").val("");
+        $("#input-password").val("");
+        $("#span-show-registerTime").html("已输入0次");
+        password = "";
+        registerTime = 0;//记录输入密码的次数
+        pressTimeArray = [];
+        pressTimeObject = [];
+        releaseTimeArray = [];
+        releaseTimeObject = [];
+        $("#button-show-figure").hide();
+    }
+
     $("#form-register").submit(function (event) {
         event.preventDefault();
         let username = $("#input-username").val();
@@ -197,112 +272,93 @@
             alert("用户名为空");
             return;
         }
-        if(password==""){
+        if (password == "") {
             alert("密码为空");
             return;
         }
-        if(registerTime < rule_registerTimes){
+        if (registerTime < rule_registerTimes) {
             alert("密码输入次数不足");
             return;
         }
+        if (pressTimeArray.length != releaseTimeArray.length) {
+            alert("按与放长度不一致，异常，请重新注册");
+            return;
+        }
+        let data = {};
+        data.user = {};
+        data.user.username = username;
+        data.user.password = password;
+        data.pressTimeArray = pressTimeArray;
+        data.releaseTimeArray = releaseTimeArray;
         $.ajax({
-            url: "",
-            type: "get",
+            url: service_url + "/user/register",
+            type: "POST",
+            contentType: "application/json",
             dataType: "json",
-            success: function(data, status){
-
+            data: JSON.stringify(data),
+            success: function (data, status) {
+                alert(data.message);
             },
             error: function (message) {
-                alert("注册失败");
+                alert("注册请求失败");
             }
         });
     });
 
-    //该写法flighttime提取没问题，但是holdtime不好提取，因为还没释放第一个键第二个可能就按下去了;可以只传时间戳给后端，但是这样前端就不能直接展示提取的效果
-    // $("#span-hint-registerTime").html("您需要重复输入" + rule_registerTimes + "次密码");
-    // let password = "";
-    // let registerTime = 0;//记录输入密码的次数
-    // let prevTime = 0;//上一个press时间
-    // let prevCharNum = -1;//上一个press字符
-    // let flightTimeArray = [];
-    // let flightTimeObject = [];
-    // let holdTimeArray = [];
-    // let holdTimeObject = [];
-    // let holeTimeIndex = 0;//记录是第几次release，来找对应的press
-    // $("#password").keydown(function (event) {//keypress 事件与 keydown 事件类似。当按钮被按下时发生该事件。然而，keypress 事件不会触发所有的键（比如 ALT、CTRL、SHIFT、ESC）。请使用 keydown() 方法来检查这些键。
-    //     let currTime = Date.now();
-    //     let currCharNum = event.which;
-    //     if (currCharNum >= 96 && currCharNum <= 105) {//转化小键盘的键盘码到字符码的范围
-    //         currCharNum = currCharNum - 48;
-    //     }
-    //     //todo 判断是否是特殊键，以及优化时间考虑（先获取时间再判断）
-    //     if (currCharNum == 13) {//回车键的处理
-    //         $("#button-register-oneTime").click();
-    //         event.preventDefault();
-    //         return false;
-    //     }
-    //     //非第一次按下
-    //     if (prevTime != 0) {
-    //         let item = {};
-    //         let key = String.fromCharCode(prevCharNum) + String.fromCharCode(currCharNum);
-    //         let value = currTime - prevTime;
-    //         item[key] = value;
-    //         flightTimeObject.push(item);
-    //     }
-    //     prevTime = currTime;//Date.now()是Date.getTime()速度的两倍，功能等价
-    //     prevCharNum = currCharNum;
-    // });
-    //
-    // $("#password").keyup(function (event) {
-    //     let currTime = Date.now();
-    //     let currCharNum = event.which;
-    //     //todo 判断是否是特殊键，以及优化时间考虑（先获取时间再判断）
-    //     if (currCharNum == 13) {//回车键的处理
-    //         return;
-    //     }
-    //     let item = {};
-    //     let key;
-    //     if (holeTimeIndex < flightTimeObject.length) {
-    //         key = Object.keys(flightTimeObject[holeTimeIndex])[0].substr(0, 1);
-    //     }
-    //     else {
-    //         key = String.fromCharCode(prevCharNum);
-    //     }
-    //     let value = currTime - prevTime;//todo 这个计算方式不对，按键不对应
-    //     item[key] = value;
-    //     holdTimeObject.push(item);
-    //     holeTimeIndex++;
-    // });
-    //
-    // $("#button-register-oneTime").click(function () {
-    //     if (registerTime == 0) {//第一次输入，记录密码
-    //         password = $("#password").val();
-    //     }
-    //     if (registerTime == rule_registerTimes) {
-    //         alert("次数够了");
-    //         return;
-    //     }
-    //     if ($("#password").val() != password) {
-    //         alert("输入密码不一致，请重新输入");
-    //         flush();
-    //         return;
-    //     }
-    //     flightTimeArray.push(flightTimeObject);
-    //     holdTimeArray.push(holdTimeObject);
-    //     registerTime++;
-    //     flush();
-    // });
-    //
-    // function flush() {
-    //     flightTimeObject = [];
-    //     holdTimeObject = [];
-    //     holeTimeIndex = 0;
-    //     $("#password").val("");
-    //     prevTime = 0;//上一个press时间
-    //     prevCharNum = -1;//上一个press字符
-    //     $("#span-show-registerTime").html("已输入" + registerTime + "次");
-    // }
+    //图形分析
+    $("#button-show-figure").click(function () {
+        let htCategories = [];
+        for (let i = 0; i < password.length; i++) {
+            htCategories.push(password[i]);
+        }
+        let htData = RawToHtDataForm(pressTimeArray, releaseTimeArray);
+        let htChart = Highcharts.chart('div-htFigure', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: '单键持续时间'
+            },
+            credits: {
+                enabled: false     //不显示LOGO
+            },
+            xAxis: {
+                categories: htCategories
+            },
+            yAxis: {
+                title: {
+                    text: '时间(ms)'
+                }
+            },
+            series: htData
+        });
 
+        let ftCategories = [];
+        for (let i = 1; i < password.length; i++) {
+            ftCategories.push(password[i-1]+password[i]);
+        }
+        let ftData = RawToFtDataForm(pressTimeArray);
+        let ftChart = Highcharts.chart('div-ftFigure', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: '双键飞行时间'
+            },
+            credits: {
+                enabled: false     //不显示LOGO
+            },
+            xAxis: {
+                categories: ftCategories
+            },
+            yAxis: {
+                title: {
+                    text: '时间(ms)'
+                }
+            },
+            series: ftData
+        });
+    });
 
 </script>
 
